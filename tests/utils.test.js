@@ -30,6 +30,12 @@ describe('utils.parseHashRecord', function() {
         }).to.throw(Error, 'Record was not passed');
     });
 
+    it('should throw error if no callback is passed', function() {
+        expect(function() {
+            utils.parseHashRecord(records[0]);
+        }).to.throw(Error, 'No callback function was provided');
+    });
+
     it('should return object with parsed log record if record and callback are passed(record without clan-tag)', function(done) {
         utils.parseHashRecord(records[0], function(err, record) {
             if (err) {
