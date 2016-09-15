@@ -36,7 +36,7 @@ describe('utils.parseRecord', function() {
                 throw err;
             }
             return record;
-        })).to.contain.all.keys(['name', 'time', 'hash', 'ip']);
+        })).to.equal({name: 'player', 'hash': 'd41d8cd98f00b204e9800998ecf8427e', ip: '192.168.0.1', time: new Date(2016, 3, 21, 19, 01, 31)});
     });
 
     it('should return object with parsed log record if record and callback are passed(record with clan-tag)', function() {
@@ -45,7 +45,7 @@ describe('utils.parseRecord', function() {
                 throw err;
             }
             return record;
-        })).to.contain.all.keys(['name', 'time', 'hash', 'ip', 'tag']);
+        })).to.equal({name: 'player', tag: 'Clan', hash: 'd41d8cd98f00b204e9800998ecf8427e', ip: '192.168.0.1', time: new Date(2016, 3, 21, 19, 01, 31)});
     });
 
 });
