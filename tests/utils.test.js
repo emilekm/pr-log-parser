@@ -31,9 +31,7 @@ describe('utils.parseHashRecord', function() {
     });
 
     it('should throw error if no callback is passed', function() {
-        expect(function() {
-            utils.parseHashRecord(records[0]);
-        }).to.throw(Error, 'No callback function was provided');
+        expect(utils.parseHashRecord(records[0])).to.eql({name: 'player', hash: 'd41d8cd98f00b204e9800998ecf8427e', ip: '192.168.0.1', time: new Date(2016, 3, 21, 19, 01, 31)});
     });
 
     it('should return object with parsed log record if record and callback are passed(record without clan-tag)', function(done) {
