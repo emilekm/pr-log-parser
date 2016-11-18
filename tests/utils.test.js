@@ -7,7 +7,9 @@ var testRecords = [
     '[2016-04-21 19:01:31] d41d8cd98f00b204e9800998ecf8427e player 192.168.0.1',
     '[2016-04-21 19:02:31] d41d8cd98f00b204e9800998ecf8427e Clan player 192.168.0.1'
 ];
-var testStdout = '[2016-04-21 19:01:31] d41d8cd98f00b204e9800998ecf8427e player 192.168.0.1\n[2016-04-21 19:02:31] d41d8cd98f00b204e9800998ecf8427e Clan player 192.168.0.1';
+
+var player = {name: 'player', hash: 'd41d8cd98f00b204e9800998ecf8427e', ip: '192.168.0.1', time: new Date(Date.UTC(2016, 3, 21, 19, 01, 31))};
+var clan_player = {name: 'player', tag: 'Clan', hash: 'd41d8cd98f00b204e9800998ecf8427e', ip: '192.168.0.1', time: new Date(Date.UTC(2016, 3, 21, 19, 02, 31))};
 
 describe('utils.parseHashRecord', function() {
 
@@ -31,8 +33,6 @@ describe('utils.parseHashRecord', function() {
         }).to.throw(Error, 'Record was not passed');
     });
 
-    var player = {name: 'player', hash: 'd41d8cd98f00b204e9800998ecf8427e', ip: '192.168.0.1', time: new Date(Date.UTC(2016, 3, 21, 19, 01, 31))};
-    var clan_player = {name: 'player', tag: 'Clan', hash: 'd41d8cd98f00b204e9800998ecf8427e', ip: '192.168.0.1', time: new Date(Date.UTC(2016, 3, 21, 19, 02, 31))};
 
     it('should return record object if no callback is passed', function() {
         expect(utils.parseHashRecord(testRecords[0])).to.eql(player);
