@@ -1,6 +1,9 @@
-const grep1 = require('grep1');
+const CommandParser = require('./lib/command.parser');
+const HashParser = require('./lib/hash.parser');
+const LogParser = require('./lib/log.parser');
 
-var Player = require('./lib/Player');
-var argv = require('yargs').argv;
-
-process.exit(0);
+module.exports = {
+    CommandParser: CommandParser,
+    HashParser: HashParser,
+    LogParser: LogParser
+}
