@@ -47,4 +47,22 @@ describe('CommandParser.parseRecord', () => {
             content: 'spam and language'
         });
     });
+
+    it('should return record object with map details if string record is passed (setnext)', () => {
+        expect(new CommandParser().parseRecord(
+            '[2017-04-04 18:27:18] !SETNEXT        performed by \'F|PRTA cassius23\': Beirut (AAS, Inf)'
+        )).to.eql({
+            time: new Date(Date.UTC(2017, 3, 4, 18, 27, 18)),
+            command: "SETNEXT",
+            issuer: {
+                tag: 'F|PRTA',
+                name: 'cassius23'
+            },
+            content: {
+                name: 'Beirut',
+                gamemode: 'AAS',
+                layer: 'Inf'
+            }
+        });
+    });
 });
